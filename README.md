@@ -1,10 +1,26 @@
 # Enterprise Infrastructure & Security Lab
 
-A documented, reproducible learning project for designing, deploying and validating a small enterprise-style IT infrastructure, focusing on networking, systems administration, resilience, security controls and monitoring.
+<div align="center">
 
-> **Project status: documentation and design baseline.** This architecture is a target lab design, not a claim that every component has already been deployed or tested. Implementation evidence and test results will be added as phases are completed.
+**DESIGN · SEGMENT · PROTECT · OBSERVE · RECOVER**
 
-## Objectives
+An isolated, documented enterprise-style infrastructure learning lab.
+
+<sub>Networks · Systems Administration · Virtualization · Defensive Security · Monitoring · Backup & Recovery</sub>
+
+</div>
+
+---
+
+## Project status
+
+<sub>Documentation and design baseline · Deployment and test completion are tracked separately.</sub>
+
+This repository is a reproducible learning project for designing, deploying and validating a small enterprise-style IT infrastructure. It focuses on networking, systems administration, resilience, security controls and monitoring.
+
+> **Important:** this architecture is a target lab design, not a claim that every component has already been deployed or tested. Implementation evidence and test results will be added as phases are completed.
+
+## 01 / Objectives
 
 - Design a segmented network with clear trust boundaries.
 - Practice Linux and Windows systems administration.
@@ -14,45 +30,69 @@ A documented, reproducible learning project for designing, deploying and validat
 - Document backup, restoration and continuity procedures.
 - Validate the lab through repeatable, non-destructive tests.
 
-## Reference architecture
+## 02 / Reference architecture
 
 Internet or simulated WAN → Edge router/firewall → Virtual switching → DMZ, User, Server and Management zones. Server and Management zones send telemetry to Monitoring. Server workloads use a restricted Backup repository.
 
+```mermaid
+flowchart TB
+    WAN((Internet / simulated WAN))
+    EDGE[Edge router / firewall]
+    CORE[Virtual switching]
+    DMZ[DMZ]
+    USERS[User network]
+    SERVERS[Server network]
+    MGMT[Management network]
+    MON[Monitoring and logs]
+    BACKUP[Backup repository]
+
+    WAN --> EDGE
+    EDGE --> CORE
+    CORE --> DMZ
+    CORE --> USERS
+    CORE --> SERVERS
+    CORE --> MGMT
+    SERVERS --> MON
+    MGMT --> MON
+    SERVERS --> BACKUP
+```
+
 This is a logical reference. Actual VLAN IDs, addressing, products and host counts will be documented only after selection and testing.
 
-## Repository map
+## 03 / Repository map
 
 | Path | Purpose |
 |---|---|
-| docs/architecture/ | Architecture and network design |
-| docs/security/ | Defensive controls and hardening |
-| docs/monitoring/ | Monitoring and log strategy |
-| docs/backup-recovery/ | Backup, restore and continuity |
-| docs/validation/ | Test plan and evidence criteria |
-| lab-notes/ | Dated implementation notes |
-| diagrams/ | Source diagrams |
-| scripts/ | Reviewed lab helper scripts |
+| `docs/architecture/` | Architecture and network design |
+| `docs/security/` | Defensive controls and hardening |
+| `docs/monitoring/` | Monitoring and log strategy |
+| `docs/backup-recovery/` | Backup, restore and continuity |
+| `docs/validation/` | Test plan and evidence criteria |
+| `docs/implementation-status.md` | Planned / implemented / tested status |
+| `lab-notes/` | Dated implementation notes |
+| `diagrams/` | Source diagrams |
+| `scripts/` | Reviewed lab helper scripts |
 
-## Suggested implementation phases
+## 04 / Suggested implementation phases
 
-1. Foundation: hypervisor, virtual networks, addressing plan and inventory.
-2. Core services: identity, DNS, DHCP, time synchronization and file services as selected.
-3. Segmentation: user, server, management and DMZ zones with documented traffic requirements.
-4. Security: least privilege, hardening, firewall policy, patching and endpoint protection.
-5. Observability: availability, resource, service and security-event monitoring.
-6. Resilience: backup policy, restore exercises and recovery documentation.
-7. Validation: repeatable tests, findings, remediation and final report.
+1. **Foundation** — hypervisor, virtual networks, addressing plan and inventory.
+2. **Core services** — identity, DNS, DHCP, time synchronization and file services as selected.
+3. **Segmentation** — user, server, management and DMZ zones with documented traffic requirements.
+4. **Security** — least privilege, hardening, firewall policy, patching and endpoint protection.
+5. **Observability** — availability, resource, service and security-event monitoring.
+6. **Resilience** — backup policy, restore exercises and recovery documentation.
+7. **Validation** — repeatable tests, findings, remediation and final report.
 
-## Principles
+## 05 / Engineering principles
 
 - Isolated lab only; do not connect experimental systems to production networks.
 - Use synthetic identities and sample data.
-- Never commit passwords, private keys, tokens, VPN profiles, or employer-confidential material.
+- Never commit passwords, private keys, tokens, VPN profiles or employer-confidential material.
 - Keep secrets outside Git and use placeholders in examples.
 - Prefer documented, reversible and non-destructive validation.
-- Mark each feature as Planned, Implemented or Tested with evidence.
+- Mark each feature as **Planned**, **Implemented** or **Tested** with evidence.
 
-## Documentation
+## 06 / Documentation
 
 - [Architecture overview](docs/architecture/overview.md)
 - [Network design](docs/architecture/network-design.md)
@@ -65,9 +105,18 @@ This is a logical reference. Actual VLAN IDs, addressing, products and host coun
 - [Scripts policy](scripts/README.md)
 - [Architecture diagram source](diagrams/architecture-overview.mmd)
 
-## Status
+## 07 / Status and evidence
 
 See [Implementation status](docs/implementation-status.md). No deployment or test is considered complete until its result is recorded.
 
+## Author
+
+**Houssam Essaki** · Final-year State Engineering student — Networks, Systems & Security
+
+- [Portfolio](https://houssamessaki.vercel.app/)
+- [LinkedIn](https://www.linkedin.com/in/houssam-essaki/)
+- [GitHub](https://github.com/HoussamEssaki)
+
 ---
-Personal learning project. Not affiliated with or representative of any employer or client environment.
+
+<sub>Personal learning project. Not affiliated with or representative of any employer or client environment.</sub>
