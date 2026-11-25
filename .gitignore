@@ -1,0 +1,31 @@
+# Local environment and editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Secrets and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+secrets/
+credentials/
+private/
+
+# Local logs, exports and temporary files
+*.log
+*.tmp
+*.bak
+*.dump
+*.sql.gz
+*.ova
+*.vmdk
+*.vdi
+*.qcow2
+*.iso
