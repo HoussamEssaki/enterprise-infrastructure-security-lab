@@ -68,6 +68,8 @@ This is a logical reference. Actual VLAN IDs, addressing, products and host coun
 | `docs/monitoring/` | Monitoring and log strategy |
 | `docs/backup-recovery/` | Backup, restore and continuity |
 | `docs/validation/` | Test plan and evidence criteria |
+| `CONTRIBUTING.md` | Contribution and documentation standards |
+| `SECURITY.md` | Responsible security reporting and publication policy |
 | `docs/implementation-status.md` | Planned / implemented / tested status |
 | `lab-notes/` | Dated implementation notes |
 | `diagrams/` | Source diagrams |
