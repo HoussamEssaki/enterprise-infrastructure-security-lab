@@ -1,0 +1,20 @@
+flowchart TB
+    WAN((Internet / simulated WAN))
+    EDGE[Edge router / firewall]
+    CORE[Virtual switching]
+    DMZ[DMZ]
+    USERS[User network]
+    SERVERS[Server network]
+    MGMT[Management network]
+    MON[Monitoring and logs]
+    BACKUP[Backup repository]
+
+    WAN --> EDGE
+    EDGE --> CORE
+    CORE --> DMZ
+    CORE --> USERS
+    CORE --> SERVERS
+    CORE --> MGMT
+    SERVERS --> MON
+    MGMT --> MON
+    SERVERS --> BACKUP
