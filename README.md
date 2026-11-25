@@ -2,6 +2,12 @@
 
 <div align="center">
 
+<img src="assets/project-cover.svg" alt="enterprise-infrastructure-security-lab — custom NEXUS project cover" width="100%" />
+
+</div>
+
+<div align="center">
+
 **DESIGN · SEGMENT · PROTECT · OBSERVE · RECOVER**
 
 An isolated, documented enterprise-style infrastructure learning lab.
