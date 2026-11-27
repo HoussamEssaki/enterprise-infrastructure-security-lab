@@ -12,7 +12,7 @@
 
 An isolated, documented enterprise-style infrastructure learning lab.
 
-<sub>Networks · Systems Administration · Virtualization · Defensive Security · Monitoring · Backup & Recovery</sub>
+<sub>Networking · Systems · Virtualization · Defensive Security · Monitoring · Backup & Recovery · Documentation</sub>
 
 </div>
 
@@ -20,25 +20,25 @@ An isolated, documented enterprise-style infrastructure learning lab.
 
 ## Project status
 
-<sub>Documentation and design baseline · Deployment and test completion are tracked separately.</sub>
+<sub>Documentation baseline · Implementation and validation tracked separately</sub>
 
-This repository is a reproducible learning project for designing, deploying and validating a small enterprise-style IT infrastructure. It focuses on networking, systems administration, resilience, security controls and monitoring.
+This repository is a structured learning project for designing, building, documenting and validating a small enterprise-style infrastructure. It is intended to demonstrate disciplined infrastructure engineering: requirements, architecture, inventories, defensive controls, monitoring, recovery, validation and evidence.
 
-> **Important:** this architecture is a target lab design, not a claim that every component has already been deployed or tested. Implementation evidence and test results will be added as phases are completed.
+> **Status integrity:** diagrams and component lists describe a target design unless a status entry and evidence explicitly indicate that deployment or testing occurred. This repository does not claim production readiness.
 
 ## 01 / Objectives
 
-- Design a segmented network with clear trust boundaries.
-- Practice Linux and Windows systems administration.
-- Explore virtualization and core infrastructure services.
-- Apply practical defensive security controls.
-- Establish service and infrastructure monitoring.
-- Document backup, restoration and continuity procedures.
-- Validate the lab through repeatable, non-destructive tests.
+- Design an understandable architecture with trust boundaries.
+- Practice virtualization, network engineering and Linux/Windows administration.
+- Document core services and dependencies.
+- Explore segmentation and defensive security controls.
+- Build monitoring coverage and useful alerting.
+- Establish backup and restore validation.
+- Maintain repeatable, sanitized evidence and findings.
 
 ## 02 / Reference architecture
 
-Internet or simulated WAN → Edge router/firewall → Virtual switching → DMZ, User, Server and Management zones. Server and Management zones send telemetry to Monitoring. Server workloads use a restricted Backup repository.
+Internet or simulated WAN → Edge router/firewall → Virtual switching → DMZ, User, Server and Management zones. Selected telemetry flows to Monitoring. Backup access is separately restricted.
 
 ```mermaid
 flowchart TB
@@ -63,59 +63,84 @@ flowchart TB
     SERVERS --> BACKUP
 ```
 
-This is a logical reference. Actual VLAN IDs, addressing, products and host counts will be documented only after selection and testing.
+This is a logical reference, not a measured topology. Actual addressing, VLAN IDs, hardware, software versions and service flows are recorded only after selection and validation.
 
-## 03 / Repository map
+## 03 / Engineering workflow
 
-| Path | Purpose |
-|---|---|
-| `docs/architecture/` | Architecture and network design |
-| `docs/security/` | Defensive controls and hardening |
-| `docs/monitoring/` | Monitoring and log strategy |
-| `docs/backup-recovery/` | Backup, restore and continuity |
-| `docs/validation/` | Test plan and evidence criteria |
-| `CONTRIBUTING.md` | Contribution and documentation standards |
-| `SECURITY.md` | Responsible security reporting and publication policy |
-| `docs/implementation-status.md` | Planned / implemented / tested status |
-| `lab-notes/` | Dated implementation notes |
-| `diagrams/` | Source diagrams |
-| `scripts/` | Reviewed lab helper scripts |
+1. **Plan** — scope, constraints, requirements, assets and decisions.
+2. **Design** — topology, zones, addressing, dependencies and traffic requirements.
+3. **Build** — isolated environment, one component at a time.
+4. **Protect** — access control, hardening, patching and defensive telemetry.
+5. **Observe** — health checks, dashboards, logs and alert review.
+6. **Recover** — backups, isolated restoration and recovery evidence.
+7. **Validate** — test records, findings, retests and limitations.
+8. **Publish** — sanitized documentation and evidence; no confidential details.
 
-## 04 / Suggested implementation phases
+## 04 / Repository guide
 
-1. **Foundation** — hypervisor, virtual networks, addressing plan and inventory.
-2. **Core services** — identity, DNS, DHCP, time synchronization and file services as selected.
-3. **Segmentation** — user, server, management and DMZ zones with documented traffic requirements.
-4. **Security** — least privilege, hardening, firewall policy, patching and endpoint protection.
-5. **Observability** — availability, resource, service and security-event monitoring.
-6. **Resilience** — backup policy, restore exercises and recovery documentation.
-7. **Validation** — repeatable tests, findings, remediation and final report.
-
-## 05 / Engineering principles
-
-- Isolated lab only; do not connect experimental systems to production networks.
-- Use synthetic identities and sample data.
-- Never commit passwords, private keys, tokens, VPN profiles or employer-confidential material.
-- Keep secrets outside Git and use placeholders in examples.
-- Prefer documented, reversible and non-destructive validation.
-- Mark each feature as **Planned**, **Implemented** or **Tested** with evidence.
-
-## 06 / Documentation
-
+### Architecture
 - [Architecture overview](docs/architecture/overview.md)
 - [Network design](docs/architecture/network-design.md)
+- [Service dependency map](docs/architecture/dependency-map.md)
+- [Infrastructure components](docs/infrastructure-components.md)
+- [Technology map](docs/technology-map.md)
+
+### Project management
+- [Project charter](docs/project-charter.md)
+- [Roadmap](docs/project-roadmap.md)
+- [Learning and build plan](docs/learning-plan.md)
+- [Implementation status](docs/implementation-status.md)
+- [PFA portfolio summary](docs/pfa-project-summary.md)
+
+### Security and operations
 - [Security controls](docs/security/security-controls.md)
 - [Monitoring strategy](docs/monitoring/monitoring-strategy.md)
+- [Monitoring catalogue](docs/operations/monitoring-catalogue.md)
+- [Maintenance checklist](docs/operations/maintenance-checklist.md)
+- [Findings register](docs/operations/findings-register.md)
 - [Backup and recovery plan](docs/backup-recovery/backup-recovery-plan.md)
 - [Validation plan](docs/validation/validation-plan.md)
-- [Implementation status](docs/implementation-status.md)
+- [Glossary](docs/glossary.md)
+
+### Reusable templates
+- [Asset inventory](docs/templates/asset-inventory.md)
+- [Traffic requirements matrix](docs/templates/traffic-matrix.md)
+- [Evidence record](docs/templates/evidence-record.md)
+- [Architecture decision record](docs/templates/decision-record.md)
+- [Change record](docs/templates/change-record.md)
+
+### Repository policies and sources
 - [Lab notes](lab-notes/README.md)
 - [Scripts policy](scripts/README.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 - [Architecture diagram source](diagrams/architecture-overview.mmd)
 
-## 07 / Status and evidence
+## 05 / Status conventions
 
-See [Implementation status](docs/implementation-status.md). No deployment or test is considered complete until its result is recorded.
+| Label | Meaning |
+|---|---|
+| Planned | Proposed; not yet deployed |
+| Implemented | Deployed; evidence reference recorded |
+| Tested | Relevant validation passed and evidence recorded |
+| Failed | Validation did not meet expectation |
+| Blocked | Cannot complete due to a documented constraint |
+| N/A | Explicitly out of scope with rationale |
+
+## 06 / Safety and quality principles
+
+- Isolated lab only; do not connect experimental systems to production.
+- Use synthetic identities and sample data.
+- Never commit passwords, private keys, tokens, VPN profiles or employer-confidential material.
+- Keep secrets outside Git; use placeholders.
+- Prefer documented, reversible and non-destructive validation.
+- Record assumptions, dependencies, scope and limitations.
+- Review public evidence for secrets and privacy risks.
+- Do not represent a planned or simulated component as implemented or tested.
+
+## 07 / Current focus
+
+Start with the [implementation status](docs/implementation-status.md) and [Phase 1 roadmap](docs/project-roadmap.md). Select a platform within available resources, establish isolation and inventory, then implement a minimal service set. Avoid deploying every listed technology simultaneously.
 
 ## Author
 
