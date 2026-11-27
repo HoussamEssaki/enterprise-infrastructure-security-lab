@@ -1,33 +1,42 @@
 # Implementation status
 
-This file separates planned design from verified implementation.
+This register separates documentation work from verified lab deployment and testing. Status changes require evidence.
 
 ## Current status
 
 | Workstream | State | Evidence |
 |---|---|---|
-| Repository structure and documentation baseline | Implemented | Initial documentation committed |
-| Architecture design | Planned | Design overview available |
-| Network segmentation | Planned | Addressing and traffic worksheets prepared |
-| Systems and core services | Planned | To be recorded after deployment |
-| Security controls | Planned | Defensive control checklist prepared |
-| Monitoring | Planned | Monitoring strategy prepared |
-| Backup and recovery | Planned | Policy and restore procedure prepared |
-| Validation | Planned | Test register prepared |
+| Repository structure and documentation baseline | Implemented | Documentation, policy and reusable templates committed |
+| Project charter / scope | Implemented | [Project charter](project-charter.md) |
+| Logical architecture | Planned | Reference architecture exists; physical implementation not evidenced |
+| Network segmentation | Planned | Design and worksheets prepared; deployment not evidenced |
+| Systems and core services | Planned | Selection and deployment evidence pending |
+| Defensive controls | Planned | Checklist prepared; deployment evidence pending |
+| Monitoring | Planned | Strategy and catalogue prepared; deployment evidence pending |
+| Backup and recovery | Planned | Policy and restore procedure prepared; restore evidence pending |
+| Validation | Planned | Register and evidence template prepared; tests pending |
+| Findings and maintenance | Planned | Reusable registers/checklist prepared |
 
 ## Evidence policy
 
-Only change a workstream to Implemented after the component has been deployed. Change it to Tested only after the relevant validation has passed and evidence is recorded.
+- **Planned:** design or proposal only.
+- **Implemented:** deployed; evidence reference recorded.
+- **Tested:** validation passed; evidence recorded.
+- **Failed / Blocked:** outcome and follow-up documented.
+- Never upgrade status merely because a document or diagram exists.
 
 ## Next milestones
 
-1. Choose the hypervisor and document host resource constraints.
-2. Create an isolated virtual network and inventory the lab VMs.
-3. Complete the addressing plan before configuring inter-zone routing.
-4. Deploy one service at a time and record sanitized configuration notes.
-5. Validate segmentation, monitoring and backup restoration.
-6. Add screenshots and diagrams only after they represent the actual lab.
+1. Select the hypervisor and document host resource constraints.
+2. Create and verify isolated networks.
+3. Complete asset and addressing inventory.
+4. Deploy a minimal set of services incrementally.
+5. Validate intended behavior and access boundaries.
+6. Establish monitoring and alert evidence.
+7. Perform a restoration exercise.
+8. Record findings, limitations and retests.
 
 ## Change log
 
-- 2026-11-25: Initial repository documentation baseline created. No infrastructure deployment is claimed by this commit.
+- 2026-11-25: Initial repository documentation baseline; no infrastructure deployment claimed.
+- 2026-11-27: Expanded project documentation, templates and operations checklists; no infrastructure deployment or testing claimed.
